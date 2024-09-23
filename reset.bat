@@ -2,7 +2,7 @@
 net file 2>nul 1>nul
 if /i not "%errorlevel%" == "0" (
     echo The requested operation requires elevation.
-    set input=
+    set input=n
     set /p input="Elevate now [y/n]? "
     if /i "%input%" == "y" (
         sudo wt cmd /k "%0" 2>nul 1>nul
