@@ -2,14 +2,13 @@
 net file 2>nul 1>nul
 if /i not "%errorlevel%" == "0" (
     echo The requested operation requires elevation.
-    set input=n
-    set /p input="Elevate now [y/n]? "
-    if /i "%input%" == "y" (
-        sudo wt cmd /k "%0" 2>nul 1>nul
-        exit
-    )
+    sudo wt cmd /k "%0" 2>nul 1>nul
+    exit
 )
 
+echo Dangerous: Instant BSOD Warning! Save your changes!
+echo ----------[ Press any key to continue ]----------
+pause 2>nul 1>nul
 :run
 echo Reseting...
 echo exit > %temp%\1.bat
